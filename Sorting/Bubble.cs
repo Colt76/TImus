@@ -1,8 +1,8 @@
 ﻿namespace Sorting;
 
-public static partial class Program
+public class Bubble
 {
-    private static int[] BubbleSimple(int[] array)
+    public static int[] BubbleSimple(int[] array)
     {
         for (var i = 0; i < array.Length-1; ++i)
         {
