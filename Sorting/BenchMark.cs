@@ -6,9 +6,14 @@ namespace Sorting;
 public class BenchMark
 {
     [Benchmark]
-    public void SimpleBubbleBench()
+    public void BubbleSimpleBench()
     {
-        var sorting = new int[] { 0, 10, 5, 7, 1200, 6, 8, 9 };
-        Bubble.BubbleSimple(sorting);
+        Bubble.BubbleSimple(new int[] { 0, 10, 5, 7, 1200, 6, 8, 9 });
+    }
+
+    [Benchmark]
+    public void BubbleWithLimitBench()
+    {
+        Bubble.BubbleWithLimit(new int[] { 0, 10, 5, 7, 1200, 6, 8, 9 });
     }
 }
