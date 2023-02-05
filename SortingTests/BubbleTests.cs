@@ -31,4 +31,20 @@ public class BubbleTests
 
         Assert.Equal(ArraySorted, sorted);
     }   
+    [Fact]
+    public void BubbleWithEarlyStopTest1()
+    {
+
+        var sorted = Bubble.BubbleWithEarlyStop1(ArrayForSorting);
+
+        Assert.Equal(ArraySorted, sorted);
+    }   
+    [Fact]
+    public void BubbleWithOtherDirectionTest()
+    {
+
+        var sorted = Bubble.BubbleWithOtherDirection(ArrayForSorting);
+
+        Assert.Equal(ArraySorted, sorted);
+    }   
 }
