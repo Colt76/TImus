@@ -6,10 +6,10 @@ public static partial class Program
     {
         var sorting = new int[] { 0, 10, 5, 7, 1200, 6, 8, 9 };
         var sorted = Bubble.BubbleSimple(sorting);
-        testing(sorted);
+        Testing(sorted);
     }
 
-    private static void testing(int[] sorted)
+    private static void Testing(int[] sorted)
     {
         for (var i = 0; i < sorted.Length; ++i)
         {
