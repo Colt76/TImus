@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace s1002;
 
-public class Sum
+public static class Program
 {
         
     private static void Main()
@@ -75,3 +75,4 @@ public class Sum
         };
     }
 }
+
