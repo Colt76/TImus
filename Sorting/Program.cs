@@ -1,12 +1,12 @@
-﻿namespace Sorting;
+﻿using BenchmarkDotNet.Running;
 
-public static partial class Program
+namespace Sorting;
+
+public static class Program
 {
     private static void Main()
     {
-        var sorting = new int[] { 0, 10, 5, 7, 1200, 6, 8, 9 };
-        var sorted = Bubble.BubbleSimple(sorting);
-        Testing(sorted);
+        var summary = BenchmarkRunner.Run<BenchMark>();
     }
 
     private static void Testing(int[] sorted)
