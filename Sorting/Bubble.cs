@@ -2,17 +2,26 @@
 
 public class Bubble
 {
+    private static bool SingleBubble(ref int[] array, int from, int to, int increment = 1)
+    {
+        var ret = false;
+        for (var i = from ; i != to; i += increment)
+        {
+            if (array[i] > array[i + 1])
+            {
+                (array[i], array[i + 1]) = (array[i + 1], array[i]);
+                ret = true;
+            }
+        }
+
+        return ret;
+    }
+
     public static int[] BubbleSimple(int[] array)
     {
         for (var i = 0; i < array.Length-1; ++i)
         {
-            for (var j = 0; j < array.Length - 1; ++j)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]); 
-                }
-            }
+            SingleBubble(ref array, 0, array.Length - 1);
         }
         return array;
     }
@@ -21,13 +30,7 @@ public class Bubble
     {
         for (var i = 0; i < array.Length-1; ++i)
         {
-            for (var j = 0; j < array.Length - 1 - i; ++j)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]); 
-                }
-            }
+            SingleBubble(ref array, 0, array.Length - 1 - i);
         }
         return array;
     }
@@ -37,16 +40,7 @@ public class Bubble
         var stop = true;
         for (var i = 0; i < array.Length-1; ++i)
         {
-            for (var j = 0; j < array.Length - 1 - i; ++j)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                    stop = false;
-                }
-            }
-
-            if (stop)
+            if (!SingleBubble(ref array, 0, array.Length - 1 - i))
             {
                 break;
             }
@@ -60,16 +54,7 @@ public class Bubble
         var i = 0;
         while (i < array.Length && continueLoop)
         {
-            continueLoop = false;
-            for (var j = 0; j < array.Length - 1 - i; ++j)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                    continueLoop = true;
-                }
-            }
-
+            continueLoop = SingleBubble(ref array, 0, array.Length - 1 - i);
             ++i;
         }
         return array;
@@ -81,33 +66,11 @@ public class Bubble
         var i = 0;
         while (i < array.Length && continueLoop)
         {
-            continueLoop = false;
-            for (var j = 0; j < array.Length - 1 - i; ++j)
-            {
-                if (array[j] > array[j + 1])
-                {
-                    (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                    continueLoop = true;
-                }
-            }
+            continueLoop = SingleBubble(ref array, 0, array.Length - 1 - i);
 
-            if (!continueLoop)
+            if (continueLoop && i < array.Length)
             {
-                break;
-            }
-
-            if (i < array.Length)
-            {
-                continueLoop = false;
-                for (var j = array.Length - 2 - i; j > 0; --j)
-                {
-                    if (array[j] > array[j + 1])
-                    {
-                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                        continueLoop = true;
-                    }
-                }
-
+                continueLoop = SingleBubble(ref array, array.Length - 2 - i, 1, -1);
                 ++i;
             }
         }
